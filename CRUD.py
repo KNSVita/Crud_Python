@@ -10,7 +10,9 @@ while x == 0:
     print("[2] Consultar elemento")
     print("[3] Alterar elemento")
     print("[4] Excluir elemento")
-    print("[5] Sair\n")
+    print("[5] Gravar lista")
+    print("[6] Importar arquivo")
+    print("[7] Sair\n")
 
 
     resposta = int(input("Digite a opção desejada : "))
@@ -56,6 +58,19 @@ while x == 0:
         lista.remove(remover)
         print(lista)
 
-#Exit
+#Gravar arquivo
     elif resposta == 5:
+        arquivo = open("texto.txt","a")
+        arquivo.writelines(lista)
+
+#Importar arquivo
+    elif resposta == 6:
+        with open("texto.txt","r") as tf:
+            lines = tf.read().split(',')
+        for line in lines:
+            print(line)
+
+
+#Exit
+    elif resposta == 7:
         exit()
