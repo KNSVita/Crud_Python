@@ -12,7 +12,7 @@ while x == 0:
     print("[3] Alterar game")
     print("[4] Excluir game")
     print("[5] Salvar bliblioteca")
-    print("[6] Importar bliblioteca")
+    print("[6] Importar bliblioteca (Só utilize essa opção se já tiver salvo sua bliblioteca.)")
     print("[7] Sair\n")
 
 
@@ -21,20 +21,20 @@ while x == 0:
 
 #INSERT
     if resposta == 1:
-        insira = str(input("\nO que deseja incluir ?\n"))
+        insira = str(input("\nO insira um game ?\n"))
         lista.append(insira)
-        print("Item inserido com sucesso!!!\n")
+        print("Game inserido com sucesso!!!\n")
         print(lista)
 
 #Select
     elif resposta == 2:
-        consultar = str(input("\nQual elemento vc gostaria de verificar ?\n"))
+        consultar = str(input("\nQual game quer buscar ?\n"))
         if consultar in lista:
-            print("O item está na lista\n")
+            print("O jogo está na lista\n")
         else:
             consultarn = consultar+'\n'
             if consultarn in lista:
-                print("O item está na lista\n")
+                print("O jogo está na lista\n")
             else:
                 print("O item não esta na lista. Gostaria de adicionar ?\n")
                 print("[1] Sim")
@@ -42,24 +42,23 @@ while x == 0:
                 cond_consu = int(input("Selecione : "))
                 if cond_consu == 1:
                     lista.append(consultar)
-                    print("\nItem adicionado\n")
+                    print("\nJogo adicionado\n")
                     print(lista,"\n")
                 else:
-                    print("\nVoltando para o menu")
+                    print("\nVoltando para o menu\n")
 
 #Alterar
     elif resposta == 3:
         print(lista)
-        alteracao = str(input("\nEscreva o item para fazer a substituição : \n"))
-        count = int(input("Selecione a posição do item que deseja alterar (ATENÇÃO : A CONTAGEM COMEÇA DO 0)\n"))
+        alteracao = str(input("\nEscreva o jogo para fazer a substituição : \n"))
+        count = int(input("Selecione a posição do game que deseja alterar (ATENÇÃO : A CONTAGEM COMEÇA DO 0)\n"))
         lista[count] = alteracao
         print(lista)
 
 #Delete
     elif resposta == 4:
-        print("\nSelecione o elemento a ser removido\n")
-        print(lista)
-        remover = str(input("Digite o elemento para ser removido (NÃO ESCREVA : '\_n') : \n"))
+        print(lista,'\n')
+        remover = str(input("Digite o game para ser removido (NÃO ESCREVA : '\-n') : \n"))
         if remover in lista:
             lista.remove(remover)
         else:
@@ -71,12 +70,14 @@ while x == 0:
     elif resposta == 5:
         arquivo = open("texto.txt","a")
         arquivo.writelines(line + "\n" for line in lista)
+        print("Bliblioteca salva!! (Ao fechar o programa para importar basta digitar a opção 6)")
 
 #Importar arquivo
     elif resposta == 6:
         arquivo = open("texto.txt","r")
         lista = arquivo.readlines()
         print(lista)
+        print("Bliblioteca importada!!")
 
 
 #Exit
