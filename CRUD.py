@@ -1,17 +1,18 @@
-lista = ['k']
+lista = []
 x = 0
 
 #MENU INICIO
 while x == 0:
 
-    print("Selecione uma das opções abaixo :\n")
+    print("Bem Vindo a sua bliblioteca de jogos!!!\n")
+    print("Abaixo estão listadas algumas funções. Comece adicionando alguns jogos a sua bliblioteca basta digitar 1\n")
 
-    print("[1] Inserir elemento")
-    print("[2] Consultar elemento")
-    print("[3] Alterar elemento")
-    print("[4] Excluir elemento")
-    print("[5] Gravar lista")
-    print("[6] Importar arquivo")
+    print("[1] Inserir game")
+    print("[2] Consultar games")
+    print("[3] Alterar game")
+    print("[4] Excluir game")
+    print("[5] Salvar bliblioteca")
+    print("[6] Importar bliblioteca")
     print("[7] Sair\n")
 
 
@@ -31,16 +32,20 @@ while x == 0:
         if consultar in lista:
             print("O item está na lista\n")
         else:
-            print("O item não esta na lista. Gostaria de adicionar ?\n")
-            print("[1] Sim")
-            print("[2] Não\n")
-            cond_consu = int(input("Selecione : "))
-            if cond_consu == 1:
-                lista.append(consultar)
-                print("\nItem adicionado\n")
-                print(lista,"\n")
+            consultarn = consultar+'\n'
+            if consultarn in lista:
+                print("O item está na lista\n")
             else:
-                print("\nVoltando para o menu")
+                print("O item não esta na lista. Gostaria de adicionar ?\n")
+                print("[1] Sim")
+                print("[2] Não\n")
+                cond_consu = int(input("Selecione : "))
+                if cond_consu == 1:
+                    lista.append(consultar)
+                    print("\nItem adicionado\n")
+                    print(lista,"\n")
+                else:
+                    print("\nVoltando para o menu")
 
 #Alterar
     elif resposta == 3:
@@ -54,21 +59,24 @@ while x == 0:
     elif resposta == 4:
         print("\nSelecione o elemento a ser removido\n")
         print(lista)
-        remover = str(input("Digite o elemento para ser removido : \n"))
-        lista.remove(remover)
+        remover = str(input("Digite o elemento para ser removido (NÃO ESCREVA : '\_n') : \n"))
+        if remover in lista:
+            lista.remove(remover)
+        else:
+            removern = remover+'\n'
+            lista.remove(removern)
         print(lista)
 
 #Gravar arquivo
     elif resposta == 5:
         arquivo = open("texto.txt","a")
-        arquivo.writelines(lista)
+        arquivo.writelines(line + "\n" for line in lista)
 
 #Importar arquivo
     elif resposta == 6:
-        with open("texto.txt","r") as tf:
-            lines = tf.read().split(',')
-        for line in lines:
-            print(line)
+        arquivo = open("texto.txt","r")
+        lista = arquivo.readlines()
+        print(lista)
 
 
 #Exit
