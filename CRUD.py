@@ -1,8 +1,7 @@
 lista = []
-x = 0
 
 #MENU INICIO
-while x == 0:
+while True:
 
     print("Bem Vindo a sua bliblioteca de jogos!!!\n")
     print("Abaixo estão listadas algumas funções. Comece adicionando alguns jogos a sua bliblioteca basta digitar 1\n")
